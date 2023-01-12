@@ -64,7 +64,7 @@ def main(link=MANGA_LINK):
 
     res = []
 
-    print('Instructions:\n1. Use hyphen to download a range of chapters ex: 1-5\n2. Use comma to select specific chapters ex: 1,3,5\n3. Use -1 to download all chapters')
+    print('Instructions:\n1. Use hyphen to download a range of chapters ex: 1-5\n2. Use comma to select specific chapters ex: 1,3,5\n3. Use -1 to download all chapters\n4. Just enter chapter number for single chapter')
     
     num_chapters = input(f'How many chapters do you want to download?({len(chapters)} chapters available)):')
 
