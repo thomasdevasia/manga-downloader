@@ -69,7 +69,7 @@ def main(link=MANGA_LINK):
     num_chapters = input(f'How many chapters do you want to download?({len(chapters)} chapters available)):')
 
     if num_chapters == '-1':
-        print('Downloading all chapters...')
+        print('Downloading all chapters')
         res = chapters
     # checking if contain both , and -
     elif ',' in num_chapters and '-' in num_chapters:
@@ -78,17 +78,16 @@ def main(link=MANGA_LINK):
     elif num_chapters.count('-') > 1:
         print('Invalid input')
     elif ',' in num_chapters:
-        print('Downloading selected chapters...')
+        # print('Downloading selected chapters...')
         for i in num_chapters.split(','):
             res.append(is_chapter_available(chapters, i))
     elif '-' in num_chapters:
-        print('Downloading range of chapters...')
+        # print('Downloading range of chapters...')
         first, last = num_chapters.split('-')
         for i in range(int(first), int(last)+1):
             res.append(is_chapter_available(chapters, i))
-    # checking if the input is a number
     elif num_chapters.isdigit():
-        print('Downloading selected chapters...')
+        # print('Downloading selected chapters...')
         res.append(is_chapter_available(chapters, num_chapters))
     else:
         print('Invalid input')
@@ -96,7 +95,7 @@ def main(link=MANGA_LINK):
     pbar = tqdm(total=len(res))    
     for chapter in res:
         if chapter:
-            tqdm.write(f'Downloading {chapter.a.text}...')
+            tqdm.write(f'Downloading {chapter.a.text}')
             download_chapter(chapter)
         pbar.update(1)
 
