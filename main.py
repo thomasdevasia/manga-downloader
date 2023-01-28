@@ -3,9 +3,17 @@ import requests
 import os
 from tqdm import tqdm
 from PIL import Image
-
+import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+# from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
 
 MANGA_LINK = 'https://read-vinlandsaga.com/'
+
+WEB_DRIVER_PATH = './driver/chrome'
 
 
 # delete all files in download folder
@@ -102,4 +110,15 @@ def main(link=MANGA_LINK):
 if __name__ == '__main__':
 
     # call the main download function
-    main()
+    driver = webdriver.Chrome(WEB_DRIVER_PATH)
+    driver.get('https://onedrive.live.com/about/en-us/signin/')
+
+    driver.implicitly_wait(5)
+    # time.sleep(5)
+    # email_id = driver.find_element(By.XPATH, '//*[@id="placeholder"]/div[2]/div/input')
+    email_id = driver.find_element(By.CLASS_NAME, 'form-control')
+    email_id.send_keys('')
+    # email_id.send_keys(Keys.ENTER)
+    time.sleep(60)
+    driver.close()
+    # main()
